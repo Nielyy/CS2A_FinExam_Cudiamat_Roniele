@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Exam</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="rsc/bootstrap-5.3.8-dist/bootstrap-5.3.8-dist/css/bootstrap.min.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="img/img.png" width="40" class="me-2">
+                <strong>My Website</strong>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- MAIN LOGIN AREA -->
+    <div class="container d-flex justify-content-center align-items-center" style="min-height: 85vh;">
+        <div class="col-md-4 login-card">
+            <h3 class="text-center mb-4">Login</h3>
+
+            <!-- ERROR MESSAGE -->
+            <div id="error-msg" class="alert alert-danger d-none"></div>
+
+            <!-- LOGIN FORM -->
+            <form>
+                <div class="mb-3">
+                    <label class="form-label">Username</label>
+                    <input type="text" id="username" class="form-control" placeholder="Enter username">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <input type="password" id="password" class="form-control" placeholder="Enter password">
+                </div>
+
+                <button type="button" onclick="validateLogin()" class="btn btn-primary w-100">Login</button>
+                <div class="text-center mt-3">
+                    <a href="#" class="d-block">Forgot Password?</a>
+                    <a href="#" class="d-block">Create an Account</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- FOOTER -->
+    <footer class="bg-dark text-white p-4 mt-5">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+                    <h5>Contact Us:</h5>
+                    <p class="mb-1">Email:Ronielcudiamat23@gmail</p>
+                    <p>Phone:0995-390-1399</p>
+                </div>
+
+                <div class="col-md-6 text-md-end">
+                    <h5>Follow Us:</h5>
+                    <a href="#" class="text-white d-block">Facebook</a>
+                    <a href="#" class="text-white d-block">Twitter</a>
+                    <a href="#" class="text-white d-block">Instagram</a>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- BOOTSTRAP JS -->
+    <script src="rsc/bootstrap-5.3.8-dist/bootstrap-5.3.8-dist/js/bootstrap.min.js"></script>
+
+    <!-- SIMPLE JS VALIDATION -->
+    <script>
+        function validateLogin() {
+            const username = document.getElementById("username");
+            const password = document.getElementById("password");
+            const errorBox = document.getElementById("error-msg");
+
+            if (username.value.trim() === "" || password.value.trim() === "") {
+                errorBox.classList.remove("d-none");
+                errorBox.textContent = "Please enter your username and password.";
+                return;
+            }
+
+            if (username.value !== "admin" || password.value !== "1234") {
+                errorBox.classList.remove("d-none");
+                errorBox.textContent = "Incorrect username or password.";
+                password.value = "";
+                password.focus();
+                return;
+            }
+
+            errorBox.classList.add("d-none");
+            alert("Login successful!");
+
+            setTimeout(() => {
+                window.location.href = "home.html";
+            }, 1000);
+        }
+    </script>
+
+</body>
+</html>
